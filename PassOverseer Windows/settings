@@ -1,0 +1,10 @@
+restore_other_table=True #Here you can choose whether the address "other" should be restored automatically and you can decide between "True"(on) and "False"(off)
+pw_gen_len=10 #Here you can choose what length your generated passwords should have
+prime_color=#0be881
+background_color=#1e272e
+secondary_color=#0fbcf9
+secondary_color_sec=#0fbcf9
+third_color=#ffa801
+third_color_sec=#ffc048
+on_btn_color=#0be881
+off_btn_color=#ff3f34

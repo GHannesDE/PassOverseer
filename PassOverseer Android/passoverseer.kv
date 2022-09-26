@@ -1,0 +1,19 @@
+<MyRoot>:
+
+    pw: pw
+
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "PassOverseer"
+            font_size: 64
+            color: 0.04313725490196078431372549019608, 0.90980392156862745098039215686275, 0.50588235294117647058823529411765
+        Label:
+            id: pw
+            text: "-"
+            font_size: 64
+        Button:
+            text: "Get PW"
+            font_size: 32
+            size: 100, 50
+            on_press: root.give_pw()
