@@ -5,6 +5,7 @@ import pyperclip
 import webbrowser
 import string
 import random
+import os
 from cryptography.fernet import Fernet
 from PIL import Image, ImageTk
 from win32api import GetSystemMetrics
@@ -22,6 +23,9 @@ ofs = str(ofs).split(".")
 ofs = ofs[0]
 geo = str(w) + "x" + str(h) + "+" + ofs + "+0"
 root.geometry(geo)
+
+wd = os.path.dirname(os.path.realpath(__file__))
+os.chdir(wd)
 
 with open("settings", "r") as get_colors:
     all_colors = get_colors.read()
