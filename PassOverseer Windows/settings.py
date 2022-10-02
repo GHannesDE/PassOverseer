@@ -1,6 +1,10 @@
 import tkinter as tk
+import os
 from PIL import Image, ImageTk
 from win32api import GetSystemMetrics
+
+wd = os.path.dirname(os.path.realpath(__file__))
+os.chdir(wd)
 
 root = tk.Tk()
 w = GetSystemMetrics(0) / 100 * 67
@@ -17,7 +21,7 @@ root.geometry(geo)
 root.resizable(False, False)
 root.configure(bg="#1e272e")
 root.wm_title("Settings")
-root.iconbitmap("design\settings-icon.ico")
+root.iconbitmap("./design/settings-icon.ico")
 
 top_bar = tk.Frame(bg="#1e272e")
 logo = Image.open("design/settings-logo.png")

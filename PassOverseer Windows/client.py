@@ -27,21 +27,12 @@ root.geometry(geo)
 wd = os.path.dirname(os.path.realpath(__file__))
 os.chdir(wd)
 
-with open("settings", "r") as get_colors:
-    all_colors = get_colors.read()
-all_colors = all_colors.split("\n")
-prime = all_colors[2]
-prime = prime.replace("prime_color=", "")
-background = all_colors[3]
-background = background.replace("background_color=", "")
-secondary = all_colors[4]
-secondary = secondary.replace("secondary_color=", "")
-secondary_sec = all_colors[5]
-secondary_sec = secondary.replace("secondary_color_sec=", "")
-third = all_colors[6]
-third = third.replace("third_color=", "")
-third_sec = all_colors[7]
-third_sec = third.replace("third_color=", "")
+prime = "#0be881"
+background = "#1e272e"
+secondary = "#0fbcf9"
+secondary_sec = "#0fbcf9"
+third = "#ffa801"
+third_sec = "#ffc048"
 
 root.resizable(False, False)
 root.configure(bg=background)
@@ -149,7 +140,7 @@ def login():
     port_label = tk.Label(port_frame, text="Port: ", bg=secondary)
     port_entry = tk.Entry(port_frame, width=27, borderwidth="0", bg=secondary_sec)
     database_frame = tk.Frame(login_frame, bg=third)
-    database_label = tk.Label(database_frame, text="Database: ", bg=third_sec)
+    database_label = tk.Label(database_frame, text="Database: ", bg=third)
     database_entry = tk.Entry(database_frame, width=27, borderwidth="0", bg="#ffc048")
     user_frame = tk.Frame(login_frame, bg="#0fbcf9")
     user_label = tk.Label(user_frame, text="Username: ", bg="#0fbcf9")
@@ -280,69 +271,6 @@ def main():
     def open_link(e):
         str(e)
         webbrowser.open("https://www.youtube.com/watch?v=YHtWb64iWvc")
-
-    def change_key_quit_key(e):
-        str(e)
-        change_key_quit()
-
-    def change_key_quit():
-        key_frame.forget()
-        info_address.config(text="")
-
-    def change_key_save_key(e):
-        str(e)
-        change_key_save()
-
-    def change_key_save():
-        key_e = key_entry.get()
-        if key_e == "":
-            info_address.config(text="Key is empty!", fg="#ff3f34")
-        else:
-            key_frame.forget()
-
-            try:
-                with open("key", "r", encoding="UTF-8") as key_Hr:
-                    history = key_Hr.read()
-                with open("key", "w", encoding="UTF-8") as key_Hw:
-                    key_Hw.write(key_e + "\n" + history)
-
-            except FileNotFoundError:
-                with open("key", "w", encoding="UTF-8") as key_Create:
-                    key_Create.write("")
-                with open("key", "r", encoding="UTF-8") as key_Hr:
-                    history = key_Hr.read()
-                with open("key", "w", encoding="UTF-8") as key_Hw:
-                    key_Hw.write(key_e + "\n" + history)
-
-    def change_key():
-        global key_frame, key_entry
-        key_frame = tk.Frame(root, pady=5, padx=5, bg="#485460")
-        key_frame1 = tk.Frame(key_frame, bg="#0fbcf9")
-        key_frame1_1 = tk.Frame(key_frame, bg="#0fbcf9")
-        key_frame2 = tk.Frame(key_frame)
-        key_frame2_1 = tk.Frame(key_frame2)
-        key_frame2_2 = tk.Frame(key_frame2)
-        key_1 = tk.Label(key_frame1, text="Key: ", width=6, bg="#0fbcf9", anchor="w", justify="left")
-        key_entry = tk.Entry(key_frame1, width=33, bg="#4bcffa", borderwidth=0)
-        warning = tk.Label(key_frame1_1, text="Before you change the key click me!!!", bg="#ffd32a", fg="black", height=2)
-        quit_btn = tk.Button(key_frame2_1, text="Quit", borderwidth=0, bg="#ff3f34", activebackground="#ff3f34", width=19, command=change_key_quit)
-        save_btn = tk.Button(key_frame2_2, text="Change", borderwidth=0, bg="#05c46b", activebackground="#05c46b", width=19, command=change_key_save)
-
-        key_frame.pack(pady=40, padx=5, anchor="n")
-        key_frame1.pack(fill="x")
-        key_frame1_1.pack(fill="x")
-        key_frame2.pack(fill="x")
-        key_frame2_1.pack(side="left", anchor="center")
-        key_frame2_2.pack(side="right", anchor="center")
-        key_1.pack(side="left", anchor="center", pady="5")
-        key_entry.pack(side="left", anchor="center", padx="15")
-        warning.pack(anchor="center", fill="x")
-        quit_btn.pack()
-        save_btn.pack()
-        key_entry.bind("<Escape>", change_key_quit_key)
-        key_entry.bind("<Return>", change_key_save_key)
-        warning.bind("<Button-1>", open_link)
-
 
     def add_table_quit_key(e):
         str(e)
@@ -918,7 +846,6 @@ def main():
     bottom_bar_3 = tk.Frame(bottom_bar_main, bg="#1e272e")
     info_address = tk.Label(bottom_bar_1, text="", bg="#1e272e", fg="#05c46b")
     help = tk.Button(bottom_bar_2, text="Help", command=help, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
-    change_key = tk.Button(bottom_bar_2, text="Change Key", command=change_key, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     add_address = tk.Button(bottom_bar_2, text="Add Address", command=add_table, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     remove_address = tk.Button(bottom_bar_2, text="Remove Address", command=remove_table, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     refresh = tk.Button(bottom_bar_3, text="Refresh", command=main, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
@@ -928,7 +855,6 @@ def main():
     bottom_bar_3.pack(side="left", anchor="center")
     info_address.pack(side="left", anchor="center")
     help.pack(side="left", anchor="center", padx=5)
-    change_key.pack(side="left", anchor="center", padx=5)
     add_address.pack(side="left", anchor="center", padx=5)
     remove_address.pack(side="left", anchor="center", padx=5)
     refresh.pack(side="left", anchor="center", padx=5)
