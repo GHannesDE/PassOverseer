@@ -790,7 +790,6 @@ def main():
 
                 def copy(to_copy=str(decoded)):
                     tc = to_copy
-                    tc = tc[2:]
                     tc = tc[:-1]
                     pyperclip.copy(tc)
 
