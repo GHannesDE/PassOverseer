@@ -827,7 +827,7 @@ def main():
             update_data = tk.Button(buttons, text="Update Service", command=update_data, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
             remove_data = tk.Button(buttons, text="Remove Service", command=remove_data, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
             refresh_data = tk.Button(buttons, text="Refresh", command=refresh_data_command, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
-            bottom_bar_table.pack(pady=5, anchor="s", side="bottom", fill="x")
+            bottom_bar_table.pack(pady=20, anchor="s", side="bottom", fill="x")
             info_frame.pack()
             buttons.pack()
             info_table.pack()
