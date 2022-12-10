@@ -47,7 +47,7 @@ root.configure(bg=background)
 root.wm_title("PassOverseer")
 root.iconbitmap("design\icon.ico")
 
-help_link = "https://www.youtube.com/watch?v=0wDUNz6ZuWs"
+help_link = "http://ghannesde.webhop.me/PassOverseer/main.html"
 
 
 def reset_settings():
@@ -275,10 +275,6 @@ def main():
 
     def help():
         webbrowser.open(help_link)
-
-    def open_link(e):
-        str(e)
-        webbrowser.open("https://www.youtube.com/watch?v=YHtWb64iWvc")
 
     def add_table_quit_key(e):
         str(e)
