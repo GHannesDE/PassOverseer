@@ -107,7 +107,7 @@ def main():
     setting_3_entry.insert("end", key_rb_var)
 
     def open_help():
-        webbrowser.open("http://ghannesde.webhop.me/PassOverseer/main.html")
+        webbrowser.open("http://ghannesde.webhop.me/PassOverseer/settings.html")
 
     def save():
         to_write_settings = "restore_other_table=" + str(switch) + " #Here you can choose whether the address \"other\" should be restored automatically and you can decide between \"True\"(on) and \"False\"(off)\n" + "pw_gen_len=" + setting_2_entry.get() + " #Here you can choose what length your generated passwords should have"
