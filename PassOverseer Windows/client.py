@@ -12,17 +12,25 @@ from win32api import GetSystemMetrics
 
 
 root = tk.Tk()
-w = GetSystemMetrics(0) / 100 * 33
-w = str(w).split(".")
-w = w[0]
-h = GetSystemMetrics(1) / 100 * 94
-h = str(h).split(".")
-h = h[0]
-ofs = GetSystemMetrics(0) / 100 * -0.4
-ofs = str(ofs).split(".")
-ofs = ofs[0]
-geo = str(w) + "x" + str(h) + "+" + ofs + "+0"
-root.geometry(geo)
+# w = GetSystemMetrics(0) / 100 * 33
+# w = str(w).split(".")
+# w = w[0]
+# h = GetSystemMetrics(1) / 100 * 94
+# h = str(h).split(".")
+# h = h[0]
+# ofs = GetSystemMetrics(0) / 100 * -0.4
+# ofs = str(ofs).split(".")
+# ofs = ofs[0]
+# geo = str(w) + "x" + str(h) + "+" + ofs + "+0"
+# root.geometry(geo)
+
+def SetSize():
+    width, height, X_POS, Y_POS = root.winfo_width(), root.winfo_height(), root.winfo_x(), root.winfo_y()
+    root.state('normal')
+    root.geometry("%dx%d+%d+%d" % (width, height, X_POS, Y_POS))
+
+root.state('zoomed') #until here is everything normal
+root.after(100,SetSize)
 
 wd = os.path.dirname(os.path.realpath(__file__))
 os.chdir(wd)
@@ -34,7 +42,7 @@ secondary_sec = "#0fbcf9"
 third = "#ffa801"
 third_sec = "#ffc048"
 
-root.resizable(False, False)
+#root.resizable(False, False)
 root.configure(bg=background)
 root.wm_title("PassOverseer")
 root.iconbitmap("design\icon.ico")
@@ -155,7 +163,7 @@ def login():
     connect_btn = tk.Button(bottom_bar_login, text="Connect", width="24", borderwidth="0", bg="#05c46b", activebackground="#05c46b", command=connect_btn)
     error_label = tk.Label(login_frame, text="", fg="#ff3f34", bg="#485460")
 
-    login_frame.pack(side="left", anchor="center", padx="140")
+    login_frame.pack(anchor="center", padx="140", pady=GetSystemMetrics(1) / 3)
     header_label.pack(padx="150", pady="10")
     host_frame.pack(pady="5", padx="5", fill="x")
     host_label.pack(side="left", padx="10", pady="2.5")
