@@ -3,6 +3,7 @@ import mysql.connector
 import tkinter as tk
 import pyperclip
 import webbrowser
+import subprocess 
 import string
 import random
 import os
@@ -385,6 +386,9 @@ def main():
         to_remove_table.bind("<Escape>", remove_table_quit_key)
         to_remove_table.bind("<Return>", remove_table_save_key)
         to_remove_table.focus()
+
+    def open_settings():
+        subprocess.run("py .\settings.py")
 
     global tables1
     tables1 = tk.Frame(root, bg="#1e272e")
@@ -851,7 +855,7 @@ def main():
     help = tk.Button(bottom_bar_2, text="Help", command=help, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     add_address = tk.Button(bottom_bar_2, text="Add Address", command=add_table, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     remove_address = tk.Button(bottom_bar_2, text="Remove Address", command=remove_table, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
-    settings = tk.Button(bottom_bar_3, text="Settings", command=main, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
+    settings = tk.Button(bottom_bar_3, text="Settings", command=open_settings, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     refresh = tk.Button(bottom_bar_3, text="Refresh", command=main, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     logout = tk.Button(bottom_bar_3, text="Logout", command=login, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     bottom_bar_main.pack(pady=20, anchor="s", side="bottom")
