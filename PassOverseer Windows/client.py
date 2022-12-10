@@ -139,7 +139,7 @@ def login():
         webbrowser.open(help_link)
 
 
-    login_frame = tk.Frame(root, height="100", width="1000", bg="#485460")
+    login_frame = tk.Frame(root, height=GetSystemMetrics(1), width="1000", bg="#485460")
     header_label = tk.Label(login_frame, text="Login", bg="#485460", fg=prime, font="Ubuntu")
     host_frame = tk.Frame(login_frame, bg=third)
     host_label = tk.Label(host_frame, text="Host: ", bg=third)
