@@ -28,8 +28,7 @@ def SetSize():
     width, height, X_POS, Y_POS = root.winfo_width(), root.winfo_height(), root.winfo_x(), root.winfo_y()
     root.state('normal')
     root.geometry("%dx%d+%d+%d" % (width, height, X_POS, Y_POS))
-
-root.state('zoomed') #until here is everything normal
+root.state('zoomed')
 root.after(100,SetSize)
 
 wd = os.path.dirname(os.path.realpath(__file__))
@@ -76,6 +75,8 @@ except ValueError:
 
 
 def login():
+    refresh_forget()
+
     global login_frame, host_entry, database_entry, user_entry, passwd_entry, error_label
 
     def clear_login():
@@ -830,7 +831,6 @@ def main():
             add_data.pack(side="left", anchor="center", padx=5)
             update_data.pack(side="left", anchor="center", padx=5)
             remove_data.pack(side="left", anchor="center", padx=5)
-            refresh_data.pack(side="left", anchor="center", padx=5)
             label1.bind("<Button-1>", start_command)
 
 
@@ -851,7 +851,9 @@ def main():
     help = tk.Button(bottom_bar_2, text="Help", command=help, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     add_address = tk.Button(bottom_bar_2, text="Add Address", command=add_table, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     remove_address = tk.Button(bottom_bar_2, text="Remove Address", command=remove_table, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
+    settings = tk.Button(bottom_bar_3, text="Settings", command=main, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     refresh = tk.Button(bottom_bar_3, text="Refresh", command=main, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
+    logout = tk.Button(bottom_bar_3, text="Logout", command=login, font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881")
     bottom_bar_main.pack(pady=20, anchor="s", side="bottom")
     bottom_bar_1.pack(pady="5")
     bottom_bar_2.pack(side="left", anchor="center")
@@ -860,7 +862,9 @@ def main():
     help.pack(side="left", anchor="center", padx=5)
     add_address.pack(side="left", anchor="center", padx=5)
     remove_address.pack(side="left", anchor="center", padx=5)
+    settings.pack(side="left", anchor="center", padx=5)
     refresh.pack(side="left", anchor="center", padx=5)
+    logout.pack(side="left", anchor="center", padx=5)
 
 
     def refresh_data_command():

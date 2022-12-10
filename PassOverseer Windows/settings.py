@@ -1,24 +1,30 @@
 import tkinter as tk
 import os
+import webbrowser
 from PIL import Image, ImageTk
 from win32api import GetSystemMetrics
 
 wd = os.path.dirname(os.path.realpath(__file__))
 os.chdir(wd)
-
+# w = GetSystemMetrics(0) / 100 * 67
+# w = str(w).split(".")
+# w = w[0]
+# h = GetSystemMetrics(1) / 100 * 94
+# h = str(h).split(".")
+# h = h[0]
+# ofs = GetSystemMetrics(0) / 100 * 32.5
+# ofs = str(ofs).split(".")
+# ofs = ofs[0]
+# geo = str(w) + "x" + str(h) + "+" + ofs + "+0"
+# root.geometry(geo)
+# root.resizable(False, False)
 root = tk.Tk()
-w = GetSystemMetrics(0) / 100 * 67
-w = str(w).split(".")
-w = w[0]
-h = GetSystemMetrics(1) / 100 * 94
-h = str(h).split(".")
-h = h[0]
-ofs = GetSystemMetrics(0) / 100 * 32.5
-ofs = str(ofs).split(".")
-ofs = ofs[0]
-geo = str(w) + "x" + str(h) + "+" + ofs + "+0"
-root.geometry(geo)
-root.resizable(False, False)
+def SetSize():
+    width, height, X_POS, Y_POS = root.winfo_width(), root.winfo_height(), root.winfo_x(), root.winfo_y()
+    root.state('normal')
+    root.geometry("%dx%d+%d+%d" % (width, height, X_POS, Y_POS))
+root.state('zoomed')
+root.after(100,SetSize) 
 root.configure(bg="#1e272e")
 root.wm_title("Settings")
 root.iconbitmap("./design/settings-icon.ico")
@@ -78,7 +84,7 @@ def main():
     elif restore_other_state is False:
         setting_1_checkbox.config(text=" Off ", bg="#ff3f34", activebackground="#ff3f34")
         switch = False
-    setting_1_frame.pack(pady=5, padx=100, fill="x")
+    setting_1_frame.pack(pady=5, padx=500, fill="x")
     setting_1_name.pack(side="left", anchor="center", padx=10)
     setting_1_checkbox.pack(side="right", anchor="center", padx=50)
     setting_1_checkbox.bind("<Button-1>", switch_setting_1_checkbox)
@@ -86,7 +92,7 @@ def main():
     setting_2_frame = tk.Frame(root, bg="#0fbcf9", height="2")
     setting_2_name = tk.Label(setting_2_frame, text="Generated Password length", width=33, height=2, bg="#0fbcf9", anchor="w", justify="left")
     setting_2_entry = tk.Entry(setting_2_frame, borderwidth=0, width=5, justify='center')
-    setting_2_frame.pack(pady=5, padx=100, fill="x")
+    setting_2_frame.pack(pady=5, padx=500, fill="x")
     setting_2_name.pack(side="left", anchor="center", padx=10)
     setting_2_entry.pack(side="right", anchor="center", padx=50)
 
@@ -95,10 +101,13 @@ def main():
     setting_3_frame = tk.Frame(root, bg="#0fbcf9", height="2")
     setting_3_name = tk.Label(setting_3_frame, text="Encryption Key", width=33, height=2, bg="#0fbcf9", anchor="w", justify="left")
     setting_3_entry = tk.Entry(setting_3_frame, borderwidth=0, width=48, justify='center')
-    setting_3_frame.pack(pady=5, padx=100, fill="x")
+    setting_3_frame.pack(pady=5, padx=500, fill="x")
     setting_3_name.pack(side="left", anchor="center", padx=10)
     setting_3_entry.pack(side="right", anchor="center", padx=50)
     setting_3_entry.insert("end", key_rb_var)
+
+    def open_help():
+        webbrowser.open("http://ghannesde.webhop.me/PassOverseer/main.html")
 
     def save():
         to_write_settings = "restore_other_table=" + str(switch) + " #Here you can choose whether the address \"other\" should be restored automatically and you can decide between \"True\"(on) and \"False\"(off)\n" + "pw_gen_len=" + setting_2_entry.get() + " #Here you can choose what length your generated passwords should have"
@@ -123,12 +132,14 @@ def main():
     info_frame = tk.Frame(bottom_bar_table, bg="#1e272e")
     buttons = tk.Frame(bottom_bar_table, bg="#1e272e")
     info = tk.Label(info_frame, text="", borderwidth=0, bg="#1e272e", fg="#0be881")
+    help_btn = tk.Button(buttons, text="Help", font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881", command=open_help)
     save_btn = tk.Button(buttons, text="Save", font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881", command=save)
     reset_btn = tk.Button(buttons, text="Reset Settings", font="Ubuntu", borderwidth=0, bg="#0be881", activebackground="#0be881", command=reset_settings)
-    bottom_bar_table.pack(pady=5, anchor="s", side="bottom", fill="x")
+    bottom_bar_table.pack(pady=20, anchor="s", side="bottom", fill="x")
     info_frame.pack()
     buttons.pack()
     info.pack()
+    help_btn.pack(side="left", anchor="center", padx=5)
     save_btn.pack(side="left", anchor="center", padx=5)
     reset_btn.pack(side="left", anchor="center", padx=5)
 
