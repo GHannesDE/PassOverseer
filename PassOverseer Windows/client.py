@@ -139,7 +139,7 @@ def login():
         webbrowser.open(help_link)
 
 
-    login_frame = tk.Frame(root, height=GetSystemMetrics(1), width="1000", bg="#485460")
+    login_frame = tk.Frame(root, height="100", width="1000", bg="#485460")
     header_label = tk.Label(login_frame, text="Login", bg="#485460", fg=prime, font="Ubuntu")
     host_frame = tk.Frame(login_frame, bg=third)
     host_label = tk.Label(host_frame, text="Host: ", bg=third)
@@ -163,7 +163,7 @@ def login():
     connect_btn = tk.Button(bottom_bar_login, text="Connect", width="24", borderwidth="0", bg="#05c46b", activebackground="#05c46b", command=connect_btn)
     error_label = tk.Label(login_frame, text="", fg="#ff3f34", bg="#485460")
 
-    login_frame.pack(anchor="center", padx="140", pady=GetSystemMetrics(1) / 3)
+    login_frame.pack(anchor="center", padx="140", pady=GetSystemMetrics(1) / 4)
     header_label.pack(padx="150", pady="10")
     host_frame.pack(pady="5", padx="5", fill="x")
     host_label.pack(side="left", padx="10", pady="2.5")
