@@ -35,15 +35,8 @@ root.after(100,SetSize)
 wd = os.path.dirname(os.path.realpath(__file__))
 os.chdir(wd)
 
-prime = "#0be881"
-background = "#1e272e"
-secondary = "#0fbcf9"
-secondary_sec = "#0fbcf9"
-third = "#ffa801"
-third_sec = "#ffc048"
-
 #root.resizable(False, False)
-root.configure(bg=background)
+root.configure(bg="#1e272e")
 root.wm_title("PassOverseer")
 root.iconbitmap("design\icon.ico")
 
@@ -143,15 +136,15 @@ def login():
 
 
     login_frame = tk.Frame(root, height="100", width="1000", bg="#485460")
-    header_label = tk.Label(login_frame, text="Login", bg="#485460", fg=prime, font="Ubuntu")
-    host_frame = tk.Frame(login_frame, bg=third)
-    host_label = tk.Label(host_frame, text="Host: ", bg=third)
-    host_entry = tk.Entry(host_frame, width=27, borderwidth="0", bg=third_sec)
-    port_frame = tk.Frame(login_frame, bg=secondary)
-    port_label = tk.Label(port_frame, text="Port: ", bg=secondary)
+    header_label = tk.Label(login_frame, text="Login", bg="#485460", fg="#0be881", font="Ubuntu")
+    host_frame = tk.Frame(login_frame, bg="#ffa801")
+    host_label = tk.Label(host_frame, text="Host: ", bg="#ffa801")
+    host_entry = tk.Entry(host_frame, width=27, borderwidth="0", bg="#ffc048")
+    port_frame = tk.Frame(login_frame, bg="#0fbcf9")
+    port_label = tk.Label(port_frame, text="Port: ", bg="#0fbcf9")
     port_entry = tk.Entry(port_frame, width=27, borderwidth="0", bg="#4bcffa")
-    database_frame = tk.Frame(login_frame, bg=third)
-    database_label = tk.Label(database_frame, text="Database: ", bg=third)
+    database_frame = tk.Frame(login_frame, bg="#ffa801")
+    database_label = tk.Label(database_frame, text="Database: ", bg="#ffa801")
     database_entry = tk.Entry(database_frame, width=27, borderwidth="0", bg="#ffc048")
     user_frame = tk.Frame(login_frame, bg="#0fbcf9")
     user_label = tk.Label(user_frame, text="Username: ", bg="#0fbcf9")
