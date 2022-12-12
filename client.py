@@ -66,6 +66,7 @@ except FileNotFoundError:
 restore_other_table = restore_other_table.replace("restore_other_table=", "")
 restore_other_table = restore_other_table.split("#")
 restore_other_table = restore_other_table[0]
+restore_other_table = restore_other_table[:-1]
 pw_gen_len = pw_gen_len.replace("pw_gen_len=", "")
 pw_gen_len = pw_gen_len.split("#")
 try:
