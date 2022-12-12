@@ -160,7 +160,7 @@ def login():
     passwd_entry = tk.Entry(passwd_frame, width=27, borderwidth="0", bg="#ffc048", show="•")
     bottom_bar_login = tk.Frame(login_frame, bg="#05c46b")
     help_frame = tk.Frame(bottom_bar_login)
-    help_btn = tk.Button(help_frame, text="Help", width="48", borderwidth="0", bg="#ffd32a", command=help, activebackground="#ffd32a")
+    help_btn = tk.Button(help_frame, text="Help", width="49", borderwidth="0", bg="#ffd32a", command=help, activebackground="#ffd32a")
     clear_login_btn = tk.Button(bottom_bar_login, text="Clear", width="23", borderwidth="0", bg="#0fbcf9", activebackground="#00d8d6", command=clear_login)
     connect_btn = tk.Button(bottom_bar_login, text="Connect", width="24", borderwidth="0", bg="#05c46b", activebackground="#05c46b", command=connect_btn)
     error_label = tk.Label(login_frame, text="", fg="#ff3f34", bg="#485460")
