@@ -96,7 +96,7 @@ def main():
     setting_2_name.pack(side="left", anchor="center", padx=10)
     setting_2_entry.pack(side="right", anchor="center", padx=50)
 
-    with open("key", "rb") as key_rb:
+    with open("key.key", "rb") as key_rb:
         key_rb_var = key_rb.read()
     setting_3_frame = tk.Frame(root, bg="#0fbcf9", height="2")
     setting_3_name = tk.Label(setting_3_frame, text="Encryption Key", width=33, height=2, bg="#0fbcf9", anchor="w", justify="left")
@@ -113,7 +113,7 @@ def main():
         to_write_settings = "restore_other_table=" + str(switch) + " #Here you can choose whether the address \"other\" should be restored automatically and you can decide between \"True\"(on) and \"False\"(off)\n" + "pw_gen_len=" + setting_2_entry.get() + " #Here you can choose what length your generated passwords should have"
         with open("settings", "w", encoding="UTF-8") as save_write_settings:
             save_write_settings.write(to_write_settings)
-        with open("key", "w") as save_write_key:
+        with open("key.key", "w") as save_write_key:
             save_write_key.write(setting_3_entry.get())
 
         try:

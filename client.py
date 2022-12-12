@@ -148,7 +148,7 @@ def login():
     host_entry = tk.Entry(host_frame, width=27, borderwidth="0", bg=third_sec)
     port_frame = tk.Frame(login_frame, bg=secondary)
     port_label = tk.Label(port_frame, text="Port: ", bg=secondary)
-    port_entry = tk.Entry(port_frame, width=27, borderwidth="0", bg=secondary_sec)
+    port_entry = tk.Entry(port_frame, width=27, borderwidth="0", bg="#4bcffa")
     database_frame = tk.Frame(login_frame, bg=third)
     database_label = tk.Label(database_frame, text="Database: ", bg=third)
     database_entry = tk.Entry(database_frame, width=27, borderwidth="0", bg="#ffc048")
