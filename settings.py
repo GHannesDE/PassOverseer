@@ -116,14 +116,18 @@ def main():
         with open("key", "w") as save_write_key:
             save_write_key.write(setting_3_entry.get())
 
-        with open("key_history", "r") as check_last_key:
-            all_keys = check_last_key.read()
+        try:
+            with open("key_history.key", "r") as check_last_key:
+                all_keys = check_last_key.read()
+        except FileNotFoundError:
+            with open("key_history.key", "w", encoding="UTF-8") as check_last_key:
+                all_keys = ""
         last_key = all_keys.split("\n")
         if last_key[0] == setting_3_entry.get():
             pass
         else:
             new_all_keys = setting_3_entry.get() + "\n" + all_keys
-            with open("key_history", "w") as write_history:
+            with open("key_history.key", "w") as write_history:
                 write_history.write(new_all_keys)
 
         info.config(text="Saved!", fg="#0be881")

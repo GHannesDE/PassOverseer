@@ -102,7 +102,7 @@ def login():
         port_fail = False
         db_fail = False
 
-        with open("last_login", "w", encoding="UTF-8") as login_data_w:
+        with open("last_login.key", "w", encoding="UTF-8") as login_data_w:
             to_insert = "host=" + host + "\nport=" + port + "\ndatabase=" + database + "\nuser=" + user
             login_data_w.write(to_insert)
 
@@ -190,7 +190,7 @@ def login():
     error_label.pack()
 
     try:
-        with open("last_login", "r", encoding="UTF-8") as login_data_r:
+        with open("last_login.key", "r", encoding="UTF-8") as login_data_r:
             host_insert = login_data_r.readline()
             host_insert = host_insert.replace("\n", "")
             port_insert = login_data_r.readline()
@@ -200,7 +200,7 @@ def login():
             user_insert = login_data_r.readline()
             user_insert = user_insert.replace("\n", "")
     except FileNotFoundError:
-        with open("last_login", "w", encoding="UTF-8") as login_data_c:
+        with open("last_login.key", "w", encoding="UTF-8") as login_data_c:
             login_data_c.write("host=\nport=\ndatabase=\nuser=")
             host_insert = ""
             port_insert = ""
@@ -263,15 +263,22 @@ def main():
     label1.pack()
     top_bar.pack(pady=20)
 
-    with open("key", "rb") as key_file:
-        key = key_file.read()
 
-    keystr = str(key)
-    keystr = keystr[2:]
-    keystr = keystr[:-1]
+    try:
+        with open("key.key", "rb") as key_file:
+            key = key_file.read()
+            keystr = str(key)
+            keystr = keystr[2:]
+            keystr = keystr[:-1]
+    except FileNotFoundError:
+        with open("key.key", "w", encoding="UTF-8") as key_file:
+            key_file.write("")
+            keystr = ""
+            
+
     if keystr == "":
         key = Fernet.generate_key()
-        with open("key", "wb") as keyH:
+        with open("key.key", "wb") as keyH:
             keyH.write(key)
 
 
@@ -492,7 +499,7 @@ def main():
                 passwd = entry_2.get()
 
                 def load_key_en():
-                    return open("key", "rb").read()
+                    return open("key.key", "rb").read()
                 to_encode = passwd.encode()
                 key_en = load_key_en()
                 f_en = Fernet(key_en)
@@ -576,7 +583,7 @@ def main():
                 succ = False
 
                 def load_key_en():
-                    return open("key", "rb").read()
+                    return open("key.key", "rb").read()
                 new_passwd = new_passwd.encode()
                 key_en = load_key_en()
                 f_en = Fernet(key_en)
@@ -768,7 +775,7 @@ def main():
 
                 try:
                     def load_key():
-                        return open("key", "rb").read()
+                        return open("key.key", "rb").read()
 
                     to_decode = str(x[1])
                     to_decode = "b\'" + to_decode + "\'"
