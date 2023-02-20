@@ -40,7 +40,7 @@ root.configure(bg="#1e272e")
 root.wm_title("PassOverseer")
 root.iconbitmap("design\icon.ico")
 
-help_link = "http://ghannesde.webhop.me/PassOverseer/main.html"
+help_link = "https://ghannesde.sytes.net/PassOverseer/"
 
 
 def reset_settings():
@@ -800,7 +800,6 @@ def main():
 
                 def copy(to_copy=str(decoded)):
                     tc = to_copy
-                    tc = tc[:-1]
                     pyperclip.copy(tc)
 
                 contD["cont{0}".format(x)] = tk.Frame(list1, bg="#0fbcf9")
